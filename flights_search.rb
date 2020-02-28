@@ -58,12 +58,12 @@ def lambda_handler(event:, context:)
   body = JSON.parse(event['body'])
 
   flights = Flights.where(
-        departure_date: body['departure_date'].values ).
-    or( arrival_date:   body['arrival_date'].values   ).
-    or( dest:           body['destination']           ).
-    or( origin:         body['origin']                ).
-    or( capacity:       body['capacity']              ).
-    or( price:          body['price']                 ).
+        departure_date: body['departure_date'] ).
+    or( arrival_date:   body['arrival_date']   ).
+    or( dest:           body['destination']    ).
+    or( origin:         body['origin']         ).
+    or( capacity:       body['capacity']       ).
+    or( price:          body['price']          ).
 
     each do |f|
      data.push(f.values)
