@@ -15,6 +15,7 @@ begin
     :password => ENV["DB_PASSWORD"])
 
   class Flights < Sequel::Model($DB[:flight]); end
+  class Airports < Sequel::Model($DB[:airport]); end
 
 rescue
   @error_message="#{$!}"
@@ -56,6 +57,21 @@ def lambda_handler(event:, context:)
   data = Array.new
 
   body = JSON.parse(event['body'])
+
+  print "\n\n#{body}\n\n"
+
+  origin = Airports.where( name: body['origin']).each{ |a| origin_airport.push(a.values) }
+  # origin_airport = []
+  # dest_airport = []
+  #
+  # Airports.where( name: "Ambrose").each{ |a| origin_airport.push(a.values) }
+  #
+  # print "\n\n#{origin_airport}\n\n"
+
+  # airport.each do |a|
+  #   print "\n\n#{a.values}\n\n"
+  # end
+
 
   flights = Flights.where(
         departure_date: body['departure_date'] ).
