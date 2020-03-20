@@ -269,8 +269,8 @@ Outputs:
   # Find out more about other implicit resources you can reference within SAM
   # https://github.com/awslabs/serverless-application-model/blob/master/docs/internals/generated_resources.rst#api
   AgentAPIResource:
-    Description: "API Gateway endpoint URL for Prod stage for HelloWorld function"
-    Value: !Sub "https://${AgentAPIResource}.execute-api.${AWS::Region}.amazonaws.com/Prod/hello/"
+    Description: "API Gateway endpoint URL for Prod stage for Utopia ARS Agent function"
+    Value: !Sub "https://${AgentAPIResource}.execute-api.${AWS::Region}.amazonaws.com/Prod/api/agent/"
   ItinerariesFunction:
     Description: "Utopia ARS Agent:Itinerarries Lambda Function ARN"
     Value: !GetAtt ItinerariesFunction.Arn
